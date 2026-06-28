@@ -7,6 +7,9 @@ import connectToDatabase from "./database/mongodb.js";
 import errorMiddleware from "./middleware/error.middleware.js";
 import cookieParser from "cookie-parser";
 
+import dns from "dns";
+dns.setDefaultResultOrder("ipv4first");
+
 const app = express();
 
 app.use(express.json());
