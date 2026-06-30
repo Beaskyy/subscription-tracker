@@ -1,9 +1,12 @@
 import { Router } from "express";
+
+import authorize from "../middleware/auth.middleware.js"
+
 import { getUser, getUsers } from "../controllers/user.controller.js";
 
 const userRoutes = Router();
 
-userRoutes.get("/", getUsers);
+userRoutes.get("/", authorize, getUsers);
 
 userRoutes.get("/:id", getUser);
 
