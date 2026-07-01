@@ -9,7 +9,13 @@ if (!DB_URI) {
 
 const connectToDatabase = async () => {
   try {
-    await mongoose.connect(DB_URI);
+    await mongoose.connect(DB_URI, {
+  serverSelectionTimeoutMS: 15000,
+  family: 4,
+  connectTimeoutMS: 15000,
+});
+console.log("Connecting to MongoDB...");
+console.log(DB_URI);
 
     console.log(`Connected to database in ${NODE_ENV} mode`);
   } catch (error) {
